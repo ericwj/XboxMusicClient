@@ -1,17 +1,22 @@
 ﻿// Copyright (c) Microsoft Corporation
-// All rights reserved. 
 //
-// Licensed under the Apache License, Version 2.0 (the ""License""); you may
-// not use this file except in compliance with the License. You may obtain a
-// copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
 //
-// THIS CODE IS PROVIDED *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF
-// ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY
-// IMPLIED WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-// MERCHANTABLITY OR NON-INFRINGEMENT. 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
 //
-// See the Apache Version 2.0 License for specific language governing
-// permissions and limitations under the License.
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
 
 using System;
 using System.ComponentModel;
@@ -76,6 +81,14 @@ namespace Microsoft.Xbox.Music.Platform.Contract
         [Description("Some of the operations failed")]
         // No status code, it's a non-blocking error
         COLLECTION_SOME_OPERATIONS_FAILED,
+
+        [Description("Concurrent update of the collection")]
+        [StatusCode(HttpStatusCode.Conflict)]
+        COLLECTION_CONCURRENT_UPDATE,
+
+        [Description("Invalid playlist reorder operation")]
+        [StatusCode(HttpStatusCode.BadRequest)]
+        COLLECTION_INVALID_PLAYLIST_REORDER,
         #endregion
 
         #region Discovery errors
@@ -108,6 +121,10 @@ namespace Microsoft.Xbox.Music.Platform.Contract
         [Description("The user is already streaming on another device")]
         [StatusCode(HttpStatusCode.Conflict)]
         DELIVERY_CONCURRENT_STREAMING,
+
+        [Description("Purchases are not available for streaming through the Xbox Music Developer APIs")]
+        [StatusCode(HttpStatusCode.Forbidden)]
+        DELIVERY_3RD_PARTY_CANNOT_STREAM_PURCHASES,
 
         [Description("Unknown delivery error")]
         [StatusCode(HttpStatusCode.NotFound)]
@@ -176,7 +193,7 @@ namespace Microsoft.Xbox.Music.Platform.Contract
 
         [Description("The requested functionality is not available in this region")]
         [StatusCode(HttpStatusCode.BadRequest)]
-        INVALID_COUNTRY,      
+        INVALID_COUNTRY,
         #endregion
 
         [Description("Oops, something went seriously wrong")]
@@ -210,4 +227,5 @@ namespace Microsoft.Xbox.Music.Platform.Contract
         }
     }
 #endif
+
 }
