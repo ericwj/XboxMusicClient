@@ -4,3 +4,5 @@ obj
 *.vssscc
 *.suo
 *tfs.bat
+project.lock.json
+.vs/
