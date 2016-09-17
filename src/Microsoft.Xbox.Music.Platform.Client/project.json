@@ -1,0 +1,23 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "buildOptions": {
+    "compile": {
+      "include": "../../XboxMusicClient/**/*.cs",
+      "exclude": [ "../../XboxMusicClient/bin/**/*.cs", "../../XboxMusicClient/obj/**/*.cs" ]
+    }
+  },
+
+  "dependencies": {
+    "Microsoft.NETCore.Portable.Compatibility": "1.0.2",
+    "NETStandard.Library": "1.6.0",
+    "Microsoft.Xbox.Music.Platform.Contract": "1.0.*"
+  },
+
+  "frameworks": {
+    "net451": {},
+    "netstandard1.4": {
+      "imports": "dnxcore50"
+    }
+  }
+}

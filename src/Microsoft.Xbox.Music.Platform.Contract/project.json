@@ -1,0 +1,30 @@
+﻿{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "compile": {
+      "include": "../../Contract/**/*.cs",
+      "exclude": [ "../../Contract/bin/**/*.cs", "../../Contract/obj/**/*.cs" ]
+    }
+  },
+  "dependencies": {
+    "Microsoft.NETCore.Portable.Compatibility": "1.0.2",
+    "NETStandard.Library": "1.6.0",
+    "Newtonsoft.Json": "9.0.1"
+  },
+
+  "frameworks": {
+    "net451": {
+      "frameworkAssemblies": {
+        "System.ComponentModel": "4.0.0.0",
+        "System.Runtime.Serialization": "4.0.0.0"
+      }
+    },
+    "netstandard1.4": {
+      "imports": "dnxcore50",
+      "dependencies": {
+        "System.ComponentModel.Primitives": "4.1.0",
+        "System.Runtime.Serialization.Primitives": "4.1.1"
+      }
+    }
+  }
+}
