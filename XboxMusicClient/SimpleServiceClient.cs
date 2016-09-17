@@ -38,7 +38,11 @@ namespace Microsoft.Xbox.Music.Platform.Client
     /// </summary>
     public class SimpleServiceClient : IDisposable
     {
-        private static readonly AssemblyName assemblyName = new AssemblyName(typeof(SimpleServiceClient).Assembly.FullName);
+#if NETCORE
+        private static readonly AssemblyName assemblyName = new AssemblyName(typeof(SimpleServiceClient).GetTypeInfo().Assembly.FullName);
+#else
+        private static readonly AssemblyName assemblyName = new AssemblyName(typeof(SimpleServiceClient).GetTypeInfo().Assembly.FullName);
+#endif
         private static readonly ProductInfoHeaderValue userAgent = new ProductInfoHeaderValue(assemblyName.Name, assemblyName.Version.ToString());
 
         private static readonly TimeSpan defaultTimeout = TimeSpan.FromSeconds(60);
