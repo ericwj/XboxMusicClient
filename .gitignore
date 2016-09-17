@@ -6,3 +6,4 @@ obj
 *tfs.bat
 project.lock.json
 .vs/
+*.user
